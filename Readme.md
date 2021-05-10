@@ -9,7 +9,21 @@ The bot will buy 100 USDT of the most volatile coins on Binance
 The bot will sell at 6% profit or 3% stop loss
 The bot works with both Main and Testnet
 
-Requirements: python-binance .7.9
+## Setup
+
+Create python virtual enviroment
+> python3 -m venv venv
+
+Activate virtual enviroment
+> . venv/bin/activate
+
+Install requirements
+> pip install -r requirements.txt
+
+create env file
+> cp .env.example .env
+
+
 
 For a step-by-step guide on how to implement and configure this bot please see the guide at: 
 https://www.cryptomaton.org/2021/05/08/how-to-code-a-binance-trading-bot-that-detects-the-most-volatile-coins-on-binance/

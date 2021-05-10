@@ -1,5 +1,6 @@
 # use for environment variables
 import os
+from dotenv import load_dotenv
 
 # needed for the binance API and websockets
 from binance.client import Client
@@ -14,21 +15,23 @@ from itertools import count
 # used to store trades and sell assets
 import json
 
+load_dotenv()
+
 
 # Switch between testnet and mainnet
 # Setting this to False will use REAL funds, use at your own risk
 # Define your API keys below in order for the toggle to work
-TESTNET = True
+TESTNET = os.getenv('TESTNET', True)
 
 
 # Get binance key and secret for TEST and MAINNET
 # The keys below are pulled from environment variables using os.getenv
 # Simply remove this and use the following format instead: api_key_test = 'YOUR_API_KEY'
-api_key_test = os.getenv('binance_api_stalkbot_testnet')
-api_secret_test = os.getenv('binance_secret_stalkbot_testnet')
+api_key_test = os.getenv('TEST_API_KEY')
+api_secret_test = os.getenv('TEST_API_SECRET')
 
-api_key_live = os.getenv('binance_api_stalkbot_live')
-api_secret_live = os.getenv('binance_secret_stalkbot_live')
+api_key_live = os.getenv('LIVE_API_KEY')
+api_secret_live = os.getenv('LIVE_API_SECRET')
 
 
 # Authenticate with the client
@@ -49,10 +52,10 @@ else:
 ####################################################
 
 # select what to pair the coins to and pull all coins paied with PAIR_WITH
-PAIR_WITH = 'USDT'
+PAIR_WITH = os.getenv('PAIR_WITH','USDT')
 
 # Define the size of each trade, by default in USDT
-QUANTITY = 100
+QUANTITY = os.getenv('QUANTITY', 10)
 
 # List of pairs to exlcude
 # by default we're excluding the most popular fiat pairs
@@ -60,16 +63,16 @@ QUANTITY = 100
 FIATS = ['EURUSDT', 'GBPUSDT', 'JPYUSDT', 'USDUSDT', 'DOWN', 'UP']
 
 # the amount of time in MINUTES to calculate the differnce from the current price
-TIME_DIFFERENCE = 5
+TIME_DIFFERENCE = os.getenv('TIME_DIFFERENCE', 5)
 
 # the difference in % between the first and second checks for the price, by default set at 10 minutes apart.
-CHANGE_IN_PRICE = 3
+CHANGE_IN_PRICE = os.getenv('CHANGE_IN_PRICE', 3)
 
 # define in % when to sell a coin that's not making a profit
-STOP_LOSS = 3
+STOP_LOSS = os.getenv('STOP_LOSS', 3)
 
 # define in % when to take profit on a profitable coin
-TAKE_PROFIT = 6
+TAKE_PROFIT = os.getenv('TAKE_PROFIT', 6)
 
 ####################################################
 #                END OF USER INPUTS                #
