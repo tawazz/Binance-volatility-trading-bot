@@ -21,7 +21,7 @@ load_dotenv()
 # Switch between testnet and mainnet
 # Setting this to False will use REAL funds, use at your own risk
 # Define your API keys below in order for the toggle to work
-TESTNET = os.getenv('TESTNET', True)
+TESTNET = json.loads(os.getenv('TESTNET', 'True').lower())
 
 
 # Get binance key and secret for TEST and MAINNET
@@ -55,7 +55,7 @@ else:
 PAIR_WITH = os.getenv('PAIR_WITH','USDT')
 
 # Define the size of each trade, by default in USDT
-QUANTITY = os.getenv('QUANTITY', 10)
+QUANTITY = int(os.getenv('QUANTITY', '10'))
 
 # List of pairs to exlcude
 # by default we're excluding the most popular fiat pairs
@@ -63,16 +63,16 @@ QUANTITY = os.getenv('QUANTITY', 10)
 FIATS = ['EURUSDT', 'GBPUSDT', 'JPYUSDT', 'USDUSDT', 'DOWN', 'UP']
 
 # the amount of time in MINUTES to calculate the differnce from the current price
-TIME_DIFFERENCE = os.getenv('TIME_DIFFERENCE', 5)
+TIME_DIFFERENCE = int(os.getenv('TIME_DIFFERENCE', '5'))
 
 # the difference in % between the first and second checks for the price, by default set at 10 minutes apart.
-CHANGE_IN_PRICE = os.getenv('CHANGE_IN_PRICE', 3)
+CHANGE_IN_PRICE = int(os.getenv('CHANGE_IN_PRICE', '3'))
 
 # define in % when to sell a coin that's not making a profit
-STOP_LOSS = os.getenv('STOP_LOSS', 3)
+STOP_LOSS = int(os.getenv('STOP_LOSS', '3'))
 
 # define in % when to take profit on a profitable coin
-TAKE_PROFIT = os.getenv('TAKE_PROFIT', 6)
+TAKE_PROFIT = int(os.getenv('TAKE_PROFIT', '6'))
 
 ####################################################
 #                END OF USER INPUTS                #

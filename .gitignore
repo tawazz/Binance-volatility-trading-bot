@@ -1,3 +1,5 @@
 venv
 .env
 .vscode
+testnet_coins_bought.json
+coins_bought.json
